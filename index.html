@@ -4,8 +4,8 @@
   </head>
   <body>
     <div class="container">
-      <button id="addRow" type="button">ADD ROW</button>
-      <button id="addColumn" type="button">ADD COLUMN</button>
+      <button id="addRow" type="button" onclick = "addRow()">ADD ROW</button>
+      <button id="addColumn" type="button" onclick = "addCol()">ADD COLUMN</button>
       <button id="removeRow" type="button" onclick="deleteRow()">REMOVE ROW</button>
       <button id="removeColumn" type="button" onclick="deleteColumn()">REMOVE COLUMN</button>
       <!-- dropdown menu here -->
@@ -18,7 +18,7 @@
     </div>
 
     <!--CONTAINS ALL THE ROWS AND COLUMNS-->
-    <table>
+    <table id = "main-grid">
     </table>
     <script src="script.js"></script>
   </body>
