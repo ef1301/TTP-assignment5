@@ -1,0 +1,27 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    background-color: rgb(245,245,245);
+    min-width: 10em;
+    height: 0;
+    overflow: hidden;
+}
+
+.dropdown-content button {
+    color: rgb(0,0,0);
+    text-decoration: none;
+    display: block;
+    border: none;
+}
+
+.dropdown-content button:hover {
+    background-color: rgb(240,240,240);
+}
+
+.dropdown:hover .dropdown-content {
+    height: auto;
+}
