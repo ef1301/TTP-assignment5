@@ -8,15 +8,21 @@ var grid = document.getElementsByTagName("table")[0];
 function deleteRow(){
     if(rows > 0){
 	grid.deleteRow(0);
+	rows--;
     }
     alert("You don't have any more rows to remove!");
 }
 
 function deleteColumn(){
     let rows = document.getElementsByTagName("tr");
-    for(let i = 0; i < rows.length; i++){
-	rows[i][rows.length - 1].remove;
+    if(columns > 0){
+	for(let i = 0; i < rows.length; i++){
+	    rows[i][rows.length - 1].remove;
+	}
+	columns--;
     }
+    alert("You don't have any more columns to remove!");
+    
 }
 
 function clearAll(){
