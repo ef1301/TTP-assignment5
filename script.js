@@ -21,11 +21,11 @@ function addRow(){
 
 function addCol(){
   columns += 1;
-  let newCol = document.createElement("td");
+  let newCol = document.createElement("tr");
 
   //Populate the col with squares
   for(let i = 0; i < rows; i++){
-    let cell = document.createElement("tr");
+    let cell = document.createElement("td");
     newCol.appendChild(cell);
     console.log("added col");
   }
