@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
   <head>
@@ -10,11 +11,29 @@
       <button id="removeRow" type="button" onclick="deleteRow()">REMOVE ROW</button>
       <button id="removeColumn" type="button" onclick="deleteColumn()">REMOVE COLUMN</button>
       <!-- dropdown menu here -->
+      <!---
       <div class="dropdown">
+          <button class="dropbtn">COLORS</button>
+          <div class="dropdown-content">
+            <button class="color" value="blue">BLUE</button>
+            <button class="color" value="red">RED</button>
+            <button class="color" value="yellow">YELLOW</button>
+          </div>
       </div>
+      -->
+      <form>
+        Select your color:
+        <select id="myColor">
+          <option value = "green">Green</option>
+          <option value = "red">Red</option>
+          <option value = "yellow">Yellow</option>
+          <option value = "blue">Blue</option>
+        </select>
+
+      </form>
       
       <button id="fillUncolored" type="button">FILL UNCOLORED</button>
-      <button id="fillAll" type="button">FILL ALL</button>
+      <button id="fillAll" type="button" onclick = "fillAll()">FILL ALL</button>
       <button id="clear" type="button" onclick="clearAll()">CLEAR ALL</button>
     </div>
 
