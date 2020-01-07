@@ -1,10 +1,15 @@
-var rows = 0;
-var columns = 0;
-var grid = document.getElementsByTagName("table")[0];
-var currentColor = document.getElementById("myColor");
+let rows = 0;
+let columns = 0;
+let grid = document.getElementsByTagName("table")[0];
+let currentColor = document.getElementById("myColor").value;
 
-// References the div that holds the grid
-var grid = document.getElementsByTagName("table")[0];
+function changeColor(){
+    currentColor = document.getElementById("myColor").value;
+}
+
+function bgColor(element){
+    element.style.backgroundColor = currentColor;
+}
 
 function addRow(){
     let newRow = document.createElement("tr");
@@ -15,10 +20,10 @@ function addRow(){
     // Populate the row with squares
     for (let i = 0; i < columns; i++){
 	let cell = document.createElement("td");
+	cell.onclick = function () { cell.style.backgroundColor = currentColor;};
 	newRow.appendChild(cell);
     }
     grid.appendChild(newRow);
-    console.log("added row");
     rows += 1;
 }
 
@@ -35,9 +40,9 @@ function addCol(){
     // Populate the col with squares
     for(let i = 0; i < rows; i++){
 	let cell = document.createElement("td");
+	cell.onclick = function () { cell.style.backgroundColor = currentColor;};
 	tableRows[i].appendChild(cell);
     }
-    console.log("added col");
     columns += 1;
 }
 
@@ -57,6 +62,7 @@ function deleteRow(){
 
 function deleteColumn(){
     let rows = document.getElementsByTagName("tr");
+    console.log(rows);
     if(columns > 0){
 	for(let i = 0; i < rows.length; i++){
 	    rows[i].deleteCell(0);
@@ -79,10 +85,26 @@ function clearAll(){
     columns = 0;
 }
 
-function fillAll(){
-  //let parent = document.getElementsByTagName("table");
-  //var arr = Array.prototype.slice.call( document.getElementsByTagName("table") )
-  console.log(Array.prototype.slice.call( document.getElementsByTagName("table") ));
+function uncoloredFill(){
+    let tableRows = document.getElementsByTagName("tr");
+    //console.log(tableRows[0].children[0]);
+    for(let i = 0; i < rows; i++){
+	for(let j = 0; j < columns; j++){
+	    if(tableRows[i].children[j].style.backgroundColor == ""){
+		tableRows[i].children[j].style.backgroundColor = currentColor;
+	    }
+	}
+    }
+}
+
+function fill(){
+    let tableRows = document.getElementsByTagName("tr");
+    console.log(tableRows[0].children[0]);
+    for(let i = 0; i < rows; i++){
+	for(let j = 0; j < columns; j++){
+	    tableRows[i].children[j].style.backgroundColor = currentColor;
+	}
+    }
 }
 
 document.getElementById("addRow").addEventListener(onclick, addRow);
@@ -92,7 +114,6 @@ document.getElementById("removeRow").addEventListener(onclick, deleteRow);
 document.getElementById("removeColumn").addEventListener(onclick, deleteColumn);
 document.getElementById("clear").addEventListener(onclick, clearAll);
 
-document.getElementById("fillAll").addEventListener(onclick, fillAll);
-
-//console.log(Array.prototype.slice.call( document.getElementsByTagName("table") ));
-
+document.getElementById("fillAll").addEventListener(onclick, fill);
+document.getElementById("fillUncolored").addEventListener(onclick, uncoloredFill);
+document.getElementById("myColor").addEventListener("change", changeColor);
