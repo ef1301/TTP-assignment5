@@ -1,6 +1,5 @@
 var rows = 0;
 var columns = 0;
-var mainGrid = document.getElementById("main-grid");
 
 // References the div that holds the grid
 var grid = document.getElementsByTagName("table")[0];
