@@ -1,12 +1,10 @@
+td {
+  border: solid thin black;
+  background-color: red;
+  height: 10px;
+  width: 10px;
+}
+
 table {
-  border-spacing: 5px;
-  border-color: black;;
-}
-
-tr{
-  background-color: blue;
-}
-
-td{
-  background-color: green;
+  empty-cells: show;
 }
