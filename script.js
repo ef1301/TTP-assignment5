@@ -2,34 +2,42 @@ var rows = 0;
 var columns = 0;
 var mainGrid = document.getElementById("main-grid");
 
-//References the div that holds the grid
+// References the div that holds the grid
 var grid = document.getElementsByTagName("table")[0];
 
 function addRow(){
-  let newRow = document.createElement("tr");
-
-  //Populate the row with squares
-  for (let i = 0; i < columns; i++){
-    let cell = document.createElement("td");
-    newRow.appendChild(cell);
+    let newRow = document.createElement("tr");
+    
+    // edge case: the table is empty
+    if (columns == 0) columns = 1;
+    
+    // Populate the row with squares
+    for (let i = 0; i < columns; i++){
+	let cell = document.createElement("td");
+	newRow.appendChild(cell);
+    }
+    grid.appendChild(newRow);
     console.log("added row");
-  }
-  grid.appendChild(newRow);
-  rows += 1;
+    rows += 1;
 }
 
 
 function addCol(){
-  let newCol = document.createElement("td");
+    let tableRows = document.getElementsByTagName("tr");
 
-  //Populate the col with squares
-  for(let i = 0; i < rows; i++){
-    let cell = document.createElement("tableRow");
-    newCol.appendChild(cell);
+    // edge case: there are no rows to add a cell to
+    if (rows == 0) {
+	grid.appendChild(document.createElement("tr"));
+	rows++;
+    }
+    
+    // Populate the col with squares
+    for(let i = 0; i < rows; i++){
+	let cell = document.createElement("td");
+	tableRows[i].appendChild(cell);
+    }
     console.log("added col");
-  }
-  grid.appendChild(newCol);
-  columns += 1;
+    columns += 1;
 }
 
 
@@ -37,26 +45,34 @@ function deleteRow(){
     if(rows > 0){
 	grid.deleteRow(0);
 	rows--;
+	if(rows == 0){
+	    columns = 0;
+	}
     }
-    alert("You don't have any more rows to remove!");
+    else{
+	alert("You don't have any more rows to remove!");
+    }
 }
 
 function deleteColumn(){
     let rows = document.getElementsByTagName("tr");
     if(columns > 0){
 	for(let i = 0; i < rows.length; i++){
-	    rows[i][rows.length - 1].removeCell();
+	    rows[i].deleteCell(0);
 	}
-	columns -= 1;
+	columns--;
+	if(columns == 0){
+	    rows = 0;
+	}
     }
-    alert("You don't have any more columns to remove!");
-    
+    else{
+	alert("You don't have any more columns to remove!");
+    }
 }
 
 function clearAll(){
-    let rows = document.getElementsByTagName("tr");
-    for(let i = 0; i < rows.length; i++){
-	grid.deleteRow(i);
+    for(let i = 0; i < rows; i++){
+	grid.deleteRow(0);
     }
     rows = 0;
     columns = 0;

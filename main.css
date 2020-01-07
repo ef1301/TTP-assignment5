@@ -1,3 +1,9 @@
-tr, td {
-    border: 1px solid black;
+td {
+    border: solid thin black;
+    height: 10px;
+    width: 10px;
+}
+
+table {
+    empty-cells: show;
 }
